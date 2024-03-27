@@ -5,14 +5,16 @@ export interface IGetHomePgImgs {
 }
 
 export interface IHomeProps {
-	data: IGetHomePgImgs;
-	loading: boolean;
-	error: any;
+	result: {
+		data: IGetHomePgImgs;
+		loading: boolean;
+		error: any;
+	};
 }
 
 export interface ICardProps {
- title: string;
- description: string;
- urlEndpoint: string;
- imagePath: string;
+	title: string;
+	description: string;
+	urlEndpoint: string;
+	imagePath: string;
 }

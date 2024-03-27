@@ -3,7 +3,7 @@ import React, { useLayoutEffect, useRef, useEffect, useState } from 'react';
 // import LogRocket from 'logrocket';
 // import ReactGA from 'react-ga'
 
-import { useQuery } from '@apollo/client';
+// import { useQuery } from '@apollo/client';
 import { HomePgImgPack } from '@/lib/__generated__/graphql';
 import { ICardProps, IHomeProps } from '@/types';
 
@@ -14,17 +14,16 @@ import { GET_HOME_IMGS } from '../lib/queries';
 // import { useErrorContext } from '../utils/ErrorContext';
 // import { SET_THROW_ERROR } from '../utils/actions';
 
-// import PropertyCard from '../components/PropertyCard';
-// import Navbar from '../components/Navbar';
+import PropertyCard from '../components/PropertyCard';
+import Navbar from '../components/Navbar';
 // import Footer from '../components/Footer';
 // import Loading from '../components/Loading';
 
-import './Home.css';
 import { graphqlClient } from '@/lib/graphql';
 import { GetServerSideProps } from 'next';
 
 function Home(props: IHomeProps) {
-	const { data, loading, error } = props;
+	const { data, loading, error } = props.result;
 	//  useEffect(() => {
 	// 		ReactGA.pageview(window.location.pathname + window.location.search);
 	// 	}, []);
@@ -109,21 +108,22 @@ function Home(props: IHomeProps) {
 						<Navbar />
 						<header style={{ backgroundImage: `url(${headerUrl})` }} className='home-header text-center text-white masthead'>
 							<div className='overlay'>
-								<div className='container welcome-message-container'>
-									<div style={{ textAlign: 'left' }} className='col-xl-9 mx-auto position-relative'>
-										<h1 className='welcome-message-text'>Welcome to Captain's Properties on Lake Superior</h1>
+								<div className='.h-96 .flex .justify-start .items-center'>
+									<div className='text-left col-xl-9  .mx-auto .relative'>
+										<h1 className='.md:break-normal .md:overflow-wrap .md:text-shadow .md:text-black ".w-4/5 .text-center .text-shadow-md"'>Welcome to Captain&apos;s Properties on Lake Superior</h1>
 									</div>
 								</div>
 							</div>
 						</header>
-						<section className='text-center bg-light rental-cards features-icons'>
-							<PropertyCard data-speed='0.8' property={hideawayCard} />
-							<PropertyCard data-speed='0.8' property={cottageCard} />
+						<section className='.text-center .flex .flex-col .justify-between .items-center .p-4'>
+							<PropertyCard {...(hideawayCard as ICardProps)} />
+							<PropertyCard {...(cottageCard as ICardProps)} />
 						</section>
-						<Footer />
+						{/* <Footer /> */}
 					</>
 				) : (
-					<Loading />
+					// <Loading />
+					<></>
 				)}
 			</div>
 		</div>
@@ -133,9 +133,10 @@ function Home(props: IHomeProps) {
 export default Home;
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const client = graphqlClient;
-	const { data, loading, error } = await client.query<HomePgImgPack>({ query: GET_HOME_IMGS });
+	const client = graphqlClient();
+	const result = await client.query<HomePgImgPack>({ query: GET_HOME_IMGS });
+
 	return {
-		props: { data, loading, error },
+		props: { result },
 	};
 };

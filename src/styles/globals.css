@@ -5,7 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito&display=swap');
 
 * {
-  font-family: 'Nunito', serif !important;
+	font-family: 'Nunito', serif !important;
 }
 
 html,
@@ -24,4 +24,28 @@ body {
 	min-height: 100vh;
 }
 
+.card-title-container {
+	border-bottom: 3px solid transparent;
+	border-image-source: linear-gradient(to right, white, #abccd8, #5f8fa5, #abccd8, white);
+	border-image-slice: 1;
+	border-image-outset: 0;
+	border-image-repeat: stretch;
+	margin-bottom: 10px;
+}
 
+.info-btn {
+	padding: 0.5rem;
+	background-color: #5f8fa5;
+	color: white;
+	font-weight: bold;
+	text-decoration: none;
+	border-radius: 6px;
+}
+
+/* Nav Styles */
+nav {
+	border-bottom: 5px solid rgb(200, 188, 167, 0.6);
+	z-index: 1000;
+	width: 100%;
+	background-color: white;
+}

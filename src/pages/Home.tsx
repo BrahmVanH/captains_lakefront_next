@@ -135,6 +135,7 @@ export default Home;
 export const getServerSideProps: GetServerSideProps = async () => {
 	const client = graphqlClient();
 	const result = await client.query<HomePgImgPack>({ query: GET_HOME_IMGS });
+	console.log('result', result);
 
 	return {
 		props: { result },

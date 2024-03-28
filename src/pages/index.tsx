@@ -13,7 +13,7 @@ export default function Page({ data }: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-	const client = graphqlClient;
+	const client = graphqlClient();
 	const { data } = await client.query<HomePgImgPack>({ query: GET_HOME_IMGS });
 	return {
 		props: { data },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Image from 'next/image';
 
@@ -6,6 +6,10 @@ import { ICardProps } from '@/types';
 
 function PropertyCard(props: ICardProps) {
 	const property = props;
+
+	useEffect(() => {
+		console.log('property card props', property);
+	}, [property]);
 
 	return (
 		<>
@@ -22,7 +26,13 @@ function PropertyCard(props: ICardProps) {
 							</a>
 						</div>
 					</div>
-					<Image alt='captains hideaway house from the beach' width={96} height={100} src={property.imagePath} className='max-h-72 max-w-96 m-4 md:rounded-md rounded-lg .self-center .lg:self-start col-sm-10' />
+					<img
+						alt='captains hideaway house from the beach'
+						width={96}
+						height={100}
+						src={property.imagePath}
+						className='max-h-72 max-w-96 m-4 md:rounded-md rounded-lg .self-center .lg:self-start col-sm-10'
+					/>
 				</div>
 			) : (
 				<></>

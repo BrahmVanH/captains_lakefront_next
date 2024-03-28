@@ -6,7 +6,7 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'lakesuperiorcaptains.s3.us-east-2.amazonaws.com',
-				port: '',
+				port: '3000',
 				pathname: '/**',
 			},
 		],

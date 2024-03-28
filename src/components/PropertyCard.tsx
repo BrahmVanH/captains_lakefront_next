@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { ICardProps } from '@/types';
 
-function PropertyCard(props: ICardProps) {
+function PropertyCard(props: Readonly<ICardProps>) {
 	const property = props;
 
 	useEffect(() => {
@@ -14,7 +14,7 @@ function PropertyCard(props: ICardProps) {
 	return (
 		<>
 			{property ? (
-				<div className='col-lg-8 col-md-10 col-sm-11 .flex .flex:lg-row .flex-col-reverse .items-center .mt-4 .pt-4 .rounded-sm'>
+				<div className='col-lg-8  col-md-10 col-sm-11 .flex .flex:lg-row .flex-col-reverse .items-center .mt-4 .pt-4 .rounded-sm'>
 					<div className='.flex  .flex-col .justify-center .items-center .content-center'>
 						<div className='card-title-container'>
 							<h4 className=''>{property.title}</h4>

@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 import { ICardProps } from '@/types';
 
-function PropertyCard(props: Readonly<ICardProps>) {
+export default function PropertyCard(props: Readonly<ICardProps>) {
 	const property = props;
 
 	useEffect(() => {
@@ -40,5 +40,3 @@ function PropertyCard(props: Readonly<ICardProps>) {
 		</>
 	);
 }
-
-export default PropertyCard;
